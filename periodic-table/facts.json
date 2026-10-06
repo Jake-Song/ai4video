@@ -1,0 +1,1191 @@
+{
+  "elements": [
+    {
+      "z": 1,
+      "symbol": "H",
+      "row": 1,
+      "col": 1,
+      "block": "s",
+      "name": "수소"
+    },
+    {
+      "z": 2,
+      "symbol": "He",
+      "row": 1,
+      "col": 18,
+      "block": "s",
+      "name": "헬륨"
+    },
+    {
+      "z": 3,
+      "symbol": "Li",
+      "row": 2,
+      "col": 1,
+      "block": "s",
+      "name": "리튬"
+    },
+    {
+      "z": 4,
+      "symbol": "Be",
+      "row": 2,
+      "col": 2,
+      "block": "s",
+      "name": "베릴륨"
+    },
+    {
+      "z": 5,
+      "symbol": "B",
+      "row": 2,
+      "col": 13,
+      "block": "p",
+      "name": "붕소"
+    },
+    {
+      "z": 6,
+      "symbol": "C",
+      "row": 2,
+      "col": 14,
+      "block": "p",
+      "name": "탄소"
+    },
+    {
+      "z": 7,
+      "symbol": "N",
+      "row": 2,
+      "col": 15,
+      "block": "p",
+      "name": "질소"
+    },
+    {
+      "z": 8,
+      "symbol": "O",
+      "row": 2,
+      "col": 16,
+      "block": "p",
+      "name": "산소"
+    },
+    {
+      "z": 9,
+      "symbol": "F",
+      "row": 2,
+      "col": 17,
+      "block": "p",
+      "name": "플루오린"
+    },
+    {
+      "z": 10,
+      "symbol": "Ne",
+      "row": 2,
+      "col": 18,
+      "block": "p",
+      "name": "네온"
+    },
+    {
+      "z": 11,
+      "symbol": "Na",
+      "row": 3,
+      "col": 1,
+      "block": "s",
+      "name": "나트륨"
+    },
+    {
+      "z": 12,
+      "symbol": "Mg",
+      "row": 3,
+      "col": 2,
+      "block": "s",
+      "name": "마그네슘"
+    },
+    {
+      "z": 13,
+      "symbol": "Al",
+      "row": 3,
+      "col": 13,
+      "block": "p",
+      "name": "알루미늄"
+    },
+    {
+      "z": 14,
+      "symbol": "Si",
+      "row": 3,
+      "col": 14,
+      "block": "p",
+      "name": "규소"
+    },
+    {
+      "z": 15,
+      "symbol": "P",
+      "row": 3,
+      "col": 15,
+      "block": "p",
+      "name": "인"
+    },
+    {
+      "z": 16,
+      "symbol": "S",
+      "row": 3,
+      "col": 16,
+      "block": "p",
+      "name": "황"
+    },
+    {
+      "z": 17,
+      "symbol": "Cl",
+      "row": 3,
+      "col": 17,
+      "block": "p",
+      "name": "염소"
+    },
+    {
+      "z": 18,
+      "symbol": "Ar",
+      "row": 3,
+      "col": 18,
+      "block": "p",
+      "name": "아르곤"
+    },
+    {
+      "z": 19,
+      "symbol": "K",
+      "row": 4,
+      "col": 1,
+      "block": "s",
+      "name": "칼륨"
+    },
+    {
+      "z": 20,
+      "symbol": "Ca",
+      "row": 4,
+      "col": 2,
+      "block": "s",
+      "name": "칼슘"
+    },
+    {
+      "z": 21,
+      "symbol": "Sc",
+      "row": 4,
+      "col": 3,
+      "block": "d",
+      "name": "Sc"
+    },
+    {
+      "z": 22,
+      "symbol": "Ti",
+      "row": 4,
+      "col": 4,
+      "block": "d",
+      "name": "Ti"
+    },
+    {
+      "z": 23,
+      "symbol": "V",
+      "row": 4,
+      "col": 5,
+      "block": "d",
+      "name": "V"
+    },
+    {
+      "z": 24,
+      "symbol": "Cr",
+      "row": 4,
+      "col": 6,
+      "block": "d",
+      "name": "Cr"
+    },
+    {
+      "z": 25,
+      "symbol": "Mn",
+      "row": 4,
+      "col": 7,
+      "block": "d",
+      "name": "Mn"
+    },
+    {
+      "z": 26,
+      "symbol": "Fe",
+      "row": 4,
+      "col": 8,
+      "block": "d",
+      "name": "Fe"
+    },
+    {
+      "z": 27,
+      "symbol": "Co",
+      "row": 4,
+      "col": 9,
+      "block": "d",
+      "name": "Co"
+    },
+    {
+      "z": 28,
+      "symbol": "Ni",
+      "row": 4,
+      "col": 10,
+      "block": "d",
+      "name": "Ni"
+    },
+    {
+      "z": 29,
+      "symbol": "Cu",
+      "row": 4,
+      "col": 11,
+      "block": "d",
+      "name": "Cu"
+    },
+    {
+      "z": 30,
+      "symbol": "Zn",
+      "row": 4,
+      "col": 12,
+      "block": "d",
+      "name": "Zn"
+    },
+    {
+      "z": 31,
+      "symbol": "Ga",
+      "row": 4,
+      "col": 13,
+      "block": "p",
+      "name": "Ga"
+    },
+    {
+      "z": 32,
+      "symbol": "Ge",
+      "row": 4,
+      "col": 14,
+      "block": "p",
+      "name": "Ge"
+    },
+    {
+      "z": 33,
+      "symbol": "As",
+      "row": 4,
+      "col": 15,
+      "block": "p",
+      "name": "As"
+    },
+    {
+      "z": 34,
+      "symbol": "Se",
+      "row": 4,
+      "col": 16,
+      "block": "p",
+      "name": "Se"
+    },
+    {
+      "z": 35,
+      "symbol": "Br",
+      "row": 4,
+      "col": 17,
+      "block": "p",
+      "name": "Br"
+    },
+    {
+      "z": 36,
+      "symbol": "Kr",
+      "row": 4,
+      "col": 18,
+      "block": "p",
+      "name": "Kr"
+    },
+    {
+      "z": 37,
+      "symbol": "Rb",
+      "row": 5,
+      "col": 1,
+      "block": "s",
+      "name": "Rb"
+    },
+    {
+      "z": 38,
+      "symbol": "Sr",
+      "row": 5,
+      "col": 2,
+      "block": "s",
+      "name": "Sr"
+    },
+    {
+      "z": 39,
+      "symbol": "Y",
+      "row": 5,
+      "col": 3,
+      "block": "d",
+      "name": "Y"
+    },
+    {
+      "z": 40,
+      "symbol": "Zr",
+      "row": 5,
+      "col": 4,
+      "block": "d",
+      "name": "Zr"
+    },
+    {
+      "z": 41,
+      "symbol": "Nb",
+      "row": 5,
+      "col": 5,
+      "block": "d",
+      "name": "Nb"
+    },
+    {
+      "z": 42,
+      "symbol": "Mo",
+      "row": 5,
+      "col": 6,
+      "block": "d",
+      "name": "Mo"
+    },
+    {
+      "z": 43,
+      "symbol": "Tc",
+      "row": 5,
+      "col": 7,
+      "block": "d",
+      "name": "Tc"
+    },
+    {
+      "z": 44,
+      "symbol": "Ru",
+      "row": 5,
+      "col": 8,
+      "block": "d",
+      "name": "Ru"
+    },
+    {
+      "z": 45,
+      "symbol": "Rh",
+      "row": 5,
+      "col": 9,
+      "block": "d",
+      "name": "Rh"
+    },
+    {
+      "z": 46,
+      "symbol": "Pd",
+      "row": 5,
+      "col": 10,
+      "block": "d",
+      "name": "Pd"
+    },
+    {
+      "z": 47,
+      "symbol": "Ag",
+      "row": 5,
+      "col": 11,
+      "block": "d",
+      "name": "Ag"
+    },
+    {
+      "z": 48,
+      "symbol": "Cd",
+      "row": 5,
+      "col": 12,
+      "block": "d",
+      "name": "Cd"
+    },
+    {
+      "z": 49,
+      "symbol": "In",
+      "row": 5,
+      "col": 13,
+      "block": "p",
+      "name": "In"
+    },
+    {
+      "z": 50,
+      "symbol": "Sn",
+      "row": 5,
+      "col": 14,
+      "block": "p",
+      "name": "Sn"
+    },
+    {
+      "z": 51,
+      "symbol": "Sb",
+      "row": 5,
+      "col": 15,
+      "block": "p",
+      "name": "Sb"
+    },
+    {
+      "z": 52,
+      "symbol": "Te",
+      "row": 5,
+      "col": 16,
+      "block": "p",
+      "name": "Te"
+    },
+    {
+      "z": 53,
+      "symbol": "I",
+      "row": 5,
+      "col": 17,
+      "block": "p",
+      "name": "I"
+    },
+    {
+      "z": 54,
+      "symbol": "Xe",
+      "row": 5,
+      "col": 18,
+      "block": "p",
+      "name": "Xe"
+    },
+    {
+      "z": 55,
+      "symbol": "Cs",
+      "row": 6,
+      "col": 1,
+      "block": "s",
+      "name": "Cs"
+    },
+    {
+      "z": 56,
+      "symbol": "Ba",
+      "row": 6,
+      "col": 2,
+      "block": "s",
+      "name": "Ba"
+    },
+    {
+      "z": 57,
+      "symbol": "La",
+      "row": 9,
+      "col": 3,
+      "block": "series",
+      "name": "La"
+    },
+    {
+      "z": 58,
+      "symbol": "Ce",
+      "row": 9,
+      "col": 4,
+      "block": "series",
+      "name": "Ce"
+    },
+    {
+      "z": 59,
+      "symbol": "Pr",
+      "row": 9,
+      "col": 5,
+      "block": "series",
+      "name": "Pr"
+    },
+    {
+      "z": 60,
+      "symbol": "Nd",
+      "row": 9,
+      "col": 6,
+      "block": "series",
+      "name": "Nd"
+    },
+    {
+      "z": 61,
+      "symbol": "Pm",
+      "row": 9,
+      "col": 7,
+      "block": "series",
+      "name": "Pm"
+    },
+    {
+      "z": 62,
+      "symbol": "Sm",
+      "row": 9,
+      "col": 8,
+      "block": "series",
+      "name": "Sm"
+    },
+    {
+      "z": 63,
+      "symbol": "Eu",
+      "row": 9,
+      "col": 9,
+      "block": "series",
+      "name": "Eu"
+    },
+    {
+      "z": 64,
+      "symbol": "Gd",
+      "row": 9,
+      "col": 10,
+      "block": "series",
+      "name": "Gd"
+    },
+    {
+      "z": 65,
+      "symbol": "Tb",
+      "row": 9,
+      "col": 11,
+      "block": "series",
+      "name": "Tb"
+    },
+    {
+      "z": 66,
+      "symbol": "Dy",
+      "row": 9,
+      "col": 12,
+      "block": "series",
+      "name": "Dy"
+    },
+    {
+      "z": 67,
+      "symbol": "Ho",
+      "row": 9,
+      "col": 13,
+      "block": "series",
+      "name": "Ho"
+    },
+    {
+      "z": 68,
+      "symbol": "Er",
+      "row": 9,
+      "col": 14,
+      "block": "series",
+      "name": "Er"
+    },
+    {
+      "z": 69,
+      "symbol": "Tm",
+      "row": 9,
+      "col": 15,
+      "block": "series",
+      "name": "Tm"
+    },
+    {
+      "z": 70,
+      "symbol": "Yb",
+      "row": 9,
+      "col": 16,
+      "block": "series",
+      "name": "Yb"
+    },
+    {
+      "z": 71,
+      "symbol": "Lu",
+      "row": 9,
+      "col": 17,
+      "block": "series",
+      "name": "Lu"
+    },
+    {
+      "z": 72,
+      "symbol": "Hf",
+      "row": 6,
+      "col": 4,
+      "block": "d",
+      "name": "Hf"
+    },
+    {
+      "z": 73,
+      "symbol": "Ta",
+      "row": 6,
+      "col": 5,
+      "block": "d",
+      "name": "Ta"
+    },
+    {
+      "z": 74,
+      "symbol": "W",
+      "row": 6,
+      "col": 6,
+      "block": "d",
+      "name": "W"
+    },
+    {
+      "z": 75,
+      "symbol": "Re",
+      "row": 6,
+      "col": 7,
+      "block": "d",
+      "name": "Re"
+    },
+    {
+      "z": 76,
+      "symbol": "Os",
+      "row": 6,
+      "col": 8,
+      "block": "d",
+      "name": "Os"
+    },
+    {
+      "z": 77,
+      "symbol": "Ir",
+      "row": 6,
+      "col": 9,
+      "block": "d",
+      "name": "Ir"
+    },
+    {
+      "z": 78,
+      "symbol": "Pt",
+      "row": 6,
+      "col": 10,
+      "block": "d",
+      "name": "Pt"
+    },
+    {
+      "z": 79,
+      "symbol": "Au",
+      "row": 6,
+      "col": 11,
+      "block": "d",
+      "name": "Au"
+    },
+    {
+      "z": 80,
+      "symbol": "Hg",
+      "row": 6,
+      "col": 12,
+      "block": "d",
+      "name": "Hg"
+    },
+    {
+      "z": 81,
+      "symbol": "Tl",
+      "row": 6,
+      "col": 13,
+      "block": "p",
+      "name": "Tl"
+    },
+    {
+      "z": 82,
+      "symbol": "Pb",
+      "row": 6,
+      "col": 14,
+      "block": "p",
+      "name": "Pb"
+    },
+    {
+      "z": 83,
+      "symbol": "Bi",
+      "row": 6,
+      "col": 15,
+      "block": "p",
+      "name": "Bi"
+    },
+    {
+      "z": 84,
+      "symbol": "Po",
+      "row": 6,
+      "col": 16,
+      "block": "p",
+      "name": "Po"
+    },
+    {
+      "z": 85,
+      "symbol": "At",
+      "row": 6,
+      "col": 17,
+      "block": "p",
+      "name": "At"
+    },
+    {
+      "z": 86,
+      "symbol": "Rn",
+      "row": 6,
+      "col": 18,
+      "block": "p",
+      "name": "Rn"
+    },
+    {
+      "z": 87,
+      "symbol": "Fr",
+      "row": 7,
+      "col": 1,
+      "block": "s",
+      "name": "Fr"
+    },
+    {
+      "z": 88,
+      "symbol": "Ra",
+      "row": 7,
+      "col": 2,
+      "block": "s",
+      "name": "Ra"
+    },
+    {
+      "z": 89,
+      "symbol": "Ac",
+      "row": 10,
+      "col": 3,
+      "block": "series",
+      "name": "Ac"
+    },
+    {
+      "z": 90,
+      "symbol": "Th",
+      "row": 10,
+      "col": 4,
+      "block": "series",
+      "name": "Th"
+    },
+    {
+      "z": 91,
+      "symbol": "Pa",
+      "row": 10,
+      "col": 5,
+      "block": "series",
+      "name": "Pa"
+    },
+    {
+      "z": 92,
+      "symbol": "U",
+      "row": 10,
+      "col": 6,
+      "block": "series",
+      "name": "U"
+    },
+    {
+      "z": 93,
+      "symbol": "Np",
+      "row": 10,
+      "col": 7,
+      "block": "series",
+      "name": "Np"
+    },
+    {
+      "z": 94,
+      "symbol": "Pu",
+      "row": 10,
+      "col": 8,
+      "block": "series",
+      "name": "Pu"
+    },
+    {
+      "z": 95,
+      "symbol": "Am",
+      "row": 10,
+      "col": 9,
+      "block": "series",
+      "name": "Am"
+    },
+    {
+      "z": 96,
+      "symbol": "Cm",
+      "row": 10,
+      "col": 10,
+      "block": "series",
+      "name": "Cm"
+    },
+    {
+      "z": 97,
+      "symbol": "Bk",
+      "row": 10,
+      "col": 11,
+      "block": "series",
+      "name": "Bk"
+    },
+    {
+      "z": 98,
+      "symbol": "Cf",
+      "row": 10,
+      "col": 12,
+      "block": "series",
+      "name": "Cf"
+    },
+    {
+      "z": 99,
+      "symbol": "Es",
+      "row": 10,
+      "col": 13,
+      "block": "series",
+      "name": "Es"
+    },
+    {
+      "z": 100,
+      "symbol": "Fm",
+      "row": 10,
+      "col": 14,
+      "block": "series",
+      "name": "Fm"
+    },
+    {
+      "z": 101,
+      "symbol": "Md",
+      "row": 10,
+      "col": 15,
+      "block": "series",
+      "name": "Md"
+    },
+    {
+      "z": 102,
+      "symbol": "No",
+      "row": 10,
+      "col": 16,
+      "block": "series",
+      "name": "No"
+    },
+    {
+      "z": 103,
+      "symbol": "Lr",
+      "row": 10,
+      "col": 17,
+      "block": "series",
+      "name": "Lr"
+    },
+    {
+      "z": 104,
+      "symbol": "Rf",
+      "row": 7,
+      "col": 4,
+      "block": "d",
+      "name": "Rf"
+    },
+    {
+      "z": 105,
+      "symbol": "Db",
+      "row": 7,
+      "col": 5,
+      "block": "d",
+      "name": "Db"
+    },
+    {
+      "z": 106,
+      "symbol": "Sg",
+      "row": 7,
+      "col": 6,
+      "block": "d",
+      "name": "Sg"
+    },
+    {
+      "z": 107,
+      "symbol": "Bh",
+      "row": 7,
+      "col": 7,
+      "block": "d",
+      "name": "Bh"
+    },
+    {
+      "z": 108,
+      "symbol": "Hs",
+      "row": 7,
+      "col": 8,
+      "block": "d",
+      "name": "Hs"
+    },
+    {
+      "z": 109,
+      "symbol": "Mt",
+      "row": 7,
+      "col": 9,
+      "block": "d",
+      "name": "Mt"
+    },
+    {
+      "z": 110,
+      "symbol": "Ds",
+      "row": 7,
+      "col": 10,
+      "block": "d",
+      "name": "Ds"
+    },
+    {
+      "z": 111,
+      "symbol": "Rg",
+      "row": 7,
+      "col": 11,
+      "block": "d",
+      "name": "Rg"
+    },
+    {
+      "z": 112,
+      "symbol": "Cn",
+      "row": 7,
+      "col": 12,
+      "block": "d",
+      "name": "Cn"
+    },
+    {
+      "z": 113,
+      "symbol": "Nh",
+      "row": 7,
+      "col": 13,
+      "block": "p",
+      "name": "Nh"
+    },
+    {
+      "z": 114,
+      "symbol": "Fl",
+      "row": 7,
+      "col": 14,
+      "block": "p",
+      "name": "Fl"
+    },
+    {
+      "z": 115,
+      "symbol": "Mc",
+      "row": 7,
+      "col": 15,
+      "block": "p",
+      "name": "Mc"
+    },
+    {
+      "z": 116,
+      "symbol": "Lv",
+      "row": 7,
+      "col": 16,
+      "block": "p",
+      "name": "Lv"
+    },
+    {
+      "z": 117,
+      "symbol": "Ts",
+      "row": 7,
+      "col": 17,
+      "block": "p",
+      "name": "Ts"
+    },
+    {
+      "z": 118,
+      "symbol": "Og",
+      "row": 7,
+      "col": 18,
+      "block": "p",
+      "name": "Og"
+    }
+  ],
+  "nist_ground_states": [
+    {
+      "z": 1,
+      "symbol": "H",
+      "charge": 0,
+      "name": "Hydrogen",
+      "configuration": "1s",
+      "ionization_eV": 13.598434599702,
+      "reported_energy": "(13.598434599702)",
+      "uncertainty_eV": "0.000000000012",
+      "references": "HDEL"
+    },
+    {
+      "z": 2,
+      "symbol": "He",
+      "charge": 0,
+      "name": "Helium",
+      "configuration": "1s2",
+      "ionization_eV": 24.587389011,
+      "reported_energy": "24.587389011",
+      "uncertainty_eV": "0.000000025",
+      "references": "L17714"
+    },
+    {
+      "z": 3,
+      "symbol": "Li",
+      "charge": 0,
+      "name": "Lithium",
+      "configuration": "1s2.2s",
+      "ionization_eV": 5.391714996,
+      "reported_energy": "5.391714996",
+      "uncertainty_eV": "0.000000022",
+      "references": "L12261"
+    },
+    {
+      "z": 4,
+      "symbol": "Be",
+      "charge": 0,
+      "name": "Beryllium",
+      "configuration": "1s2.2s2",
+      "ionization_eV": 9.322699,
+      "reported_energy": "9.322699",
+      "uncertainty_eV": "0.000007",
+      "references": "L5964"
+    },
+    {
+      "z": 5,
+      "symbol": "B",
+      "charge": 0,
+      "name": "Boron",
+      "configuration": "1s2.2s2.2p",
+      "ionization_eV": 8.298019,
+      "reported_energy": "8.298019",
+      "uncertainty_eV": "0.000003",
+      "references": "L12312"
+    },
+    {
+      "z": 6,
+      "symbol": "C",
+      "charge": 0,
+      "name": "Carbon",
+      "configuration": "1s2.2s2.2p2",
+      "ionization_eV": 11.260288,
+      "reported_energy": "11.2602880",
+      "uncertainty_eV": "0.0000011",
+      "references": "L20057"
+    },
+    {
+      "z": 7,
+      "symbol": "N",
+      "charge": 0,
+      "name": "Nitrogen",
+      "configuration": "1s2.2s2.2p3",
+      "ionization_eV": 14.53413,
+      "reported_energy": "14.53413",
+      "uncertainty_eV": "0.00004",
+      "references": "L1411"
+    },
+    {
+      "z": 8,
+      "symbol": "O",
+      "charge": 0,
+      "name": "Oxygen",
+      "configuration": "1s2.2s2.2p4",
+      "ionization_eV": 13.618055,
+      "reported_energy": "13.618055",
+      "uncertainty_eV": "0.000007",
+      "references": "L74,L3760"
+    },
+    {
+      "z": 9,
+      "symbol": "F",
+      "charge": 0,
+      "name": "Fluorine",
+      "configuration": "1s2.2s2.2p5",
+      "ionization_eV": 17.42282,
+      "reported_energy": "17.42282",
+      "uncertainty_eV": "0.00005",
+      "references": "L7481,L526"
+    },
+    {
+      "z": 10,
+      "symbol": "Ne",
+      "charge": 0,
+      "name": "Neon",
+      "configuration": "1s2.2s2.2p6",
+      "ionization_eV": 21.564541,
+      "reported_energy": "21.564541",
+      "uncertainty_eV": "0.000007",
+      "references": "L8826,L1407"
+    },
+    {
+      "z": 11,
+      "symbol": "Na",
+      "charge": 0,
+      "name": "Sodium",
+      "configuration": "[Ne].3s",
+      "ionization_eV": 5.13907696,
+      "reported_energy": "5.13907696",
+      "uncertainty_eV": "0.00000025",
+      "references": "L10921,L9648"
+    },
+    {
+      "z": 12,
+      "symbol": "Mg",
+      "charge": 0,
+      "name": "Magnesium",
+      "configuration": "[Ne].3s2",
+      "ionization_eV": 7.646236,
+      "reported_energy": "7.646236",
+      "uncertainty_eV": "0.000004",
+      "references": "L10635,L6969"
+    },
+    {
+      "z": 13,
+      "symbol": "Al",
+      "charge": 0,
+      "name": "Aluminum",
+      "configuration": "[Ne].3s2.3p",
+      "ionization_eV": 5.985769,
+      "reported_energy": "5.985769",
+      "uncertainty_eV": "0.000003",
+      "references": "L7215,L10321"
+    },
+    {
+      "z": 14,
+      "symbol": "Si",
+      "charge": 0,
+      "name": "Silicon",
+      "configuration": "[Ne].3s2.3p2",
+      "ionization_eV": 8.15168,
+      "reported_energy": "8.15168",
+      "uncertainty_eV": "0.00003",
+      "references": "L5815"
+    },
+    {
+      "z": 15,
+      "symbol": "P",
+      "charge": 0,
+      "name": "Phosphorus",
+      "configuration": "[Ne].3s2.3p3",
+      "ionization_eV": 10.486686,
+      "reported_energy": "10.486686",
+      "uncertainty_eV": "0.000015",
+      "references": "L5148"
+    },
+    {
+      "z": 16,
+      "symbol": "S",
+      "charge": 0,
+      "name": "Sulfur",
+      "configuration": "[Ne].3s2.3p4",
+      "ionization_eV": 10.3600167,
+      "reported_energy": "10.3600167",
+      "uncertainty_eV": "0.0000014",
+      "references": "L23116"
+    },
+    {
+      "z": 17,
+      "symbol": "Cl",
+      "charge": 0,
+      "name": "Chlorine",
+      "configuration": "[Ne].3s2.3p5",
+      "ionization_eV": 12.967633,
+      "reported_energy": "12.967633",
+      "uncertainty_eV": "0.000016",
+      "references": "L19191"
+    },
+    {
+      "z": 18,
+      "symbol": "Ar",
+      "charge": 0,
+      "name": "Argon",
+      "configuration": "[Ne].3s2.3p6",
+      "ionization_eV": 15.7596119,
+      "reported_energy": "15.7596119",
+      "uncertainty_eV": "0.0000005",
+      "references": "L9217"
+    },
+    {
+      "z": 19,
+      "symbol": "K",
+      "charge": 0,
+      "name": "Potassium",
+      "configuration": "[Ar].4s",
+      "ionization_eV": 4.34066373,
+      "reported_energy": "4.34066373",
+      "uncertainty_eV": "0.00000009",
+      "references": "L5451,L5783,L7185"
+    },
+    {
+      "z": 20,
+      "symbol": "Ca",
+      "charge": 0,
+      "name": "Calcium",
+      "configuration": "[Ar].4s2",
+      "ionization_eV": 6.113154921,
+      "reported_energy": "6.1131549210",
+      "uncertainty_eV": "0.0000000005",
+      "references": "L22848"
+    }
+  ],
+  "capacities": {
+    "s": 2,
+    "p": 6,
+    "d": 10,
+    "f": 14
+  },
+  "source_url": "https://physics.nist.gov/cgi-bin/ASD/ie.pl?spectra=H-Ca%20I&units=1&format=1&order=0&at_num_out=on&sp_name_out=on&ion_charge_out=on&el_name_out=on&shells_out=on&e_out=0&unc_out=on&biblio=on",
+  "retrieved": "2026-10-05",
+  "validation": {
+    "elements": 118,
+    "nist_ground_states_verified": 20,
+    "ionization_data": "NIST ASD 5.12, eV",
+    "exceptions_preserved": [
+      "Be > B",
+      "N > O",
+      "Mg > Al",
+      "P > S"
+    ],
+    "detailed_configuration_range": "neutral H–Ca",
+    "nist_snapshot_sha256": "5c7d71fcc54135d24fa38087b8a3a1f7503dc6b977d3d4c437f1d92515d63ba8"
+  }
+}

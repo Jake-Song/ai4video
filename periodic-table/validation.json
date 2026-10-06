@@ -1,0 +1,33 @@
+{
+  "elements": 118,
+  "nist_ground_states_verified": 20,
+  "ionization_data": "NIST ASD 5.12, eV",
+  "exceptions_preserved": [
+    "Be > B",
+    "N > O",
+    "Mg > Al",
+    "P > S"
+  ],
+  "detailed_configuration_range": "neutral H–Ca",
+  "nist_snapshot_sha256": "5c7d71fcc54135d24fa38087b8a3a1f7503dc6b977d3d4c437f1d92515d63ba8",
+  "duration": 708.7,
+  "frames": 21261,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "voice": "ko-KR-SunHiNeural",
+  "tempo": 1.0730625931445603,
+  "scenes": 32,
+  "chapters": 8,
+  "subtitle_cues": 185,
+  "full_decode": "passed",
+  "preview_full_decode": "passed",
+  "subtitle_source_match": "passed",
+  "original_duration_preserved": "passed",
+  "scene_budgets_preserved": "passed",
+  "sha256": "fcd69d0291ac9b7e66f0e04b123e89f7e4d205d6cb868c26b216a78a83d6297e",
+  "preview_sha256": "d22a1335e77cd778ec9d76a1c3ce1073cd35821681044f89db81ad82b4f71515",
+  "preview_duration": 60.0
+}

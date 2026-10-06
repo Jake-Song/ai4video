@@ -1,0 +1,14 @@
+[project]
+name = "ai4video"
+version = "0.1.0"
+description = "여러 영상 프로젝트와 장면 클립 제작 관리"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "Pillow==12.3.0",
+    "numpy==2.5.3",
+    "edge-tts==7.2.8",
+]
+
+[tool.uv]
+package = false

@@ -1,0 +1,48 @@
+{
+  "video_sha256": "fcd69d0291ac9b7e66f0e04b123e89f7e4d205d6cb868c26b216a78a83d6297e",
+  "integrated_LUFS": -16.03,
+  "true_peak_dBTP": -1.5,
+  "loudness_range_LU": 4.1,
+  "narration_alignment": [
+    {
+      "time_seconds": 3,
+      "waveform_correlation": 0.99999,
+      "offset_ms": 0.0
+    },
+    {
+      "time_seconds": 250,
+      "waveform_correlation": 1.0,
+      "offset_ms": 0.0
+    },
+    {
+      "time_seconds": 287,
+      "waveform_correlation": 1.0,
+      "offset_ms": 0.0
+    },
+    {
+      "time_seconds": 308,
+      "waveform_correlation": 1.0,
+      "offset_ms": 0.0
+    },
+    {
+      "time_seconds": 421,
+      "waveform_correlation": 1.0,
+      "offset_ms": 0.0
+    },
+    {
+      "time_seconds": 444,
+      "waveform_correlation": 1.0,
+      "offset_ms": 0.0
+    },
+    {
+      "time_seconds": 689,
+      "waveform_correlation": 1.0,
+      "offset_ms": 0.0
+    },
+    {
+      "time_seconds": 701,
+      "waveform_correlation": 1.0,
+      "offset_ms": 0.0
+    }
+  ]
+}

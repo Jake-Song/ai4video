@@ -1,0 +1,8 @@
+{
+  "title": "주기율표는 왜 이런 모양일까?",
+  "status": "review",
+  "language": "ko",
+  "build": "build.py",
+  "timeline": "timeline.json",
+  "clips": "clips"
+}

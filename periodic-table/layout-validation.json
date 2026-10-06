@@ -1,0 +1,23 @@
+{
+  "sampled_frames": 96,
+  "text_bounds_checked": 2246,
+  "unsafe_text_boxes": [],
+  "scientific_checks": {
+    "elements": 118,
+    "nist_ground_states_verified": 20,
+    "ionization_data": "NIST ASD 5.12, eV",
+    "exceptions_preserved": [
+      "Be > B",
+      "N > O",
+      "Mg > Al",
+      "P > S"
+    ],
+    "detailed_configuration_range": "neutral H–Ca",
+    "nist_snapshot_sha256": "5c7d71fcc54135d24fa38087b8a3a1f7503dc6b977d3d4c437f1d92515d63ba8"
+  },
+  "source_sha256": {
+    "lesson.py": "bc3e809ee131fa1ff6866096f20c7fc217bf90b06096df99a208af490748b470",
+    "visuals.py": "4b7683471970efd0f317bbea176c47576277dc77ad8be41bc455c33d8665d838",
+    "timeline.json": "3b66e1110b8f55b929aa7f3289aeea9f91f6cf9be182aeecd3193360df59f1f5"
+  }
+}
