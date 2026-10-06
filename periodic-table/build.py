@@ -35,6 +35,7 @@ def write_script(scenes, duration, path):
     script=[f'# {TITLE}', f'한국어 {VOICE} · {duration/60:.2f}분 · 1920×1080 / 30fps']
     if path.name=='script-draft.ko.md':
         script.append('영상 제작 전 내레이션 원고 · [참고 영상과 반영 범위](./reference-notes.ko.md)')
+        script.append('표시된 총길이와 시작 시각은 현재 타이밍 예산 기준입니다. 수정 내레이션의 실제 길이는 음성 생성 후 확인하며, 분량이 늘어난 장면은 제작 전에 시간 재배정이 필요합니다.')
     for s in scenes:
         script.append(f'## {stamp(s["start"])[:-4]} · {s["title"]}\n\n'+'\n\n'.join(s['beats']))
         if s['note']: script.append('제작 주석: '+s['note'])

@@ -5,7 +5,9 @@
 원소 카드와 주기율표가 이어지고 실제 이온화 에너지 그래프로 주기성을 확인합니다.
 
 - [완성 영상](./periodic-table.ko.mp4) — 11분 48.7초, 1920×1080, 30fps, H.264/AAC.
+- [추가 설명 통합 영상](./periodic-table-integrated.ko.mp4) — 15분 22.1초. 기존 파울리 설명을 확장본으로 교체하고, 전자 정원·원소 한계 설명을 관련 장면 뒤에 삽입했습니다. 1080p/30fps이며 추가 부분은 720p 프리뷰를 확대했습니다. [통합 대본](./script-integrated.ko.md) · [통합 자막](./periodic-table-integrated.ko.srt).
 - [주기·족·바깥 전자 설명 60초 미리보기](./periodic-table-preview.ko.mp4).
+- [추가 설명 프리뷰](./periodic-table-additions-preview.ko.mp4) — 파울리 배타 원리, 껍질 정원 2n², 원소 137과 상대론적 한계. 한국어 내레이션·자막, 1280×720 / 30fps.
 - [한국어 대본](./script.ko.md) · [한국어 자막](./periodic-table.ko.srt).
 - [영상 제작 전 수정 대본](./script-draft.ko.md) · [EBS 참고 구간과 반영 내용](./reference-notes.ko.md).
 - [원소·전자배치·에너지 데이터](./facts.json) · [파일 검증 결과](./validation.json).
@@ -61,6 +63,27 @@ uv run ai4video.py run periodic-table check
 남는 시간은 장면 끝의 화면 유지 시간으로 사용하며 음성을 자르지 않습니다.
 마지막 복습 질문 뒤에는 3초의 생각할 시간을 둡니다.
 출력 음량 목표는 -16 LUFS, 최대 true peak 목표는 -1.5 dBTP입니다.
+
+추가 설명만 따로 제작할 때는 루트에서 다음을 실행합니다. `audio`는 추가 대본을
+Microsoft Edge 음성 서비스로 전송합니다. `additions_preview.py`는 `lesson.py`의
+파울리 단락 전체와 정원·원소 한계 단락의 추가 문장만 사용하며, 음성의 실제 길이로
+별도 타임라인을 만듭니다. 자료와 검증 결과는 `preview/additions/`에 저장합니다.
+
+```bash
+.venv/bin/python periodic-table/additions_preview.py audio
+.venv/bin/python periodic-table/additions_preview.py render
+.venv/bin/python periodic-table/additions_preview.py check
+```
+
+검토한 프리뷰를 기존 완성 영상의 해당 위치에 합치려면 다음을 실행합니다.
+`merge_additions.py`는 원본과 프리뷰를 보존하고 별도 통합본을 출력합니다.
+통합 타임라인은 `integrated-timeline.json`, 구간 영상과 검증 기록은
+`preview/integrated/`에 저장하며, 8개 챕터와 전체 자막 시각을 다시 계산합니다.
+
+```bash
+.venv/bin/python periodic-table/merge_additions.py render
+.venv/bin/python periodic-table/merge_additions.py check
+```
 
 MP4·음성·클립·미리보기·로그는 로컬 산출물로 Git에서 제외합니다.
 원본 코드, 대본, 자막, 타임라인, 공개 데이터와 검증 기록을 함께 관리합니다.
