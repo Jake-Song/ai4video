@@ -7,7 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "Pillow==12.3.0",
     "numpy==2.5.3",
-    "edge-tts==7.2.8",
+    "edge-tts==7.3.1",
 ]
 
 [tool.uv]

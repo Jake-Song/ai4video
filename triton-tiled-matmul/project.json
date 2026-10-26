@@ -1,0 +1,16 @@
+{
+  "title": "Triton tiled matmul · 출력 타일 하나를 따라가 보기",
+  "status": "review",
+  "language": "ko",
+  "build": "build.py",
+  "timeline": "timeline.json",
+  "clips": "clips",
+  "review": {
+    "clear_resolved_notes": true
+  },
+  "narration": {
+    "provider": "elevenlabs",
+    "voice_id": "7Nah3cbXKVmGX7gQUuwz",
+    "model_id": "eleven_multilingual_v2"
+  }
+}

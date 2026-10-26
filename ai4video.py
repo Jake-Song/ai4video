@@ -42,6 +42,13 @@ def main():
     parser = argparse.ArgumentParser(description='영상 프로젝트와 장면 클립 관리')
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('list', help='등록된 프로젝트 목록')
+    p = commands.add_parser('review', help='브라우저에서 컷 미리보기와 수정 메모')
+    p.add_argument('project', nargs='?')
+    p.add_argument('--host', default='127.0.0.1')
+    p.add_argument('--port', type=int, default=8765)
+    p = commands.add_parser('notes', help='프로젝트에 저장된 수정 메모 조회')
+    p.add_argument('project')
+    p.add_argument('--all', action='store_true', help='반영 완료·비운 메모도 포함')
     for action in ('init', 'register'):
         p = commands.add_parser(action, help='새 폴더 생성' if action == 'init' else '기존 폴더 등록')
         p.add_argument('project')
@@ -76,6 +83,23 @@ def main():
             (folder / 'README.md').write_text(f'# {args.title}\n\n대본은 `script.ko.md`, 장면 영상은 `clips/`에서 관리합니다.\n'
                 '\n제작 자동화가 필요하면 `build.py`를 추가하고 의존성은 루트에서 `uv add`로 관리하세요.\n')
         print(folder)
+    elif args.command == 'review':
+        cmd = [str(ROOT/'.venv/bin/python'), str(ROOT/'review.py'), '--host', args.host, '--port', str(args.port)]
+        if args.project:
+            read_project(args.project)
+            cmd += ['--project',args.project]
+        return subprocess.run(cmd,cwd=ROOT).returncode
+    elif args.command == 'notes':
+        folder,_ = read_project(args.project)
+        path=folder/'review-notes.json'
+        data=json.loads(path.read_text()) if path.exists() else {'notes':{}}
+        notes=[n for n in data['notes'].values() if args.all or (n.get('status','pending')=='pending' and n.get('text','').strip())]
+        if not notes:
+            print('미반영 수정 메모가 없습니다.' if data['notes'] and not args.all else '저장된 수정 메모가 없습니다.')
+        for note in notes:
+            print(f"컷 {note['cut_id']} · {note.get('label','')} · 장면 {note.get('scene_time',0):.2f}초 · 컷 내부 {note.get('cut_time',0):.2f}초")
+            print(note['text'])
+            print()
     elif args.command == 'clips':
         folder, data = read_project(args.project)
         clips = local_path(folder, data['clips'])

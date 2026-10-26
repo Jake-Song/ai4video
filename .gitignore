@@ -8,3 +8,7 @@
 *.mp3
 *.wav
 *.log
+**/node_modules/
+**/public/fonts/
+**/node_modules/
+**/public/fonts/

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>컷 미리보기 · ai4video</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon" aria-hidden="true">▦</span><strong>컷 미리보기</strong><select id="project-select" class="project-select" aria-label="영상 프로젝트"><option>프로젝트를 불러오는 중</option></select></div>
+    <div class="header-actions"><span id="status" class="status" role="status">불러오는 중</span><button id="reload" class="button subtle">↻ 새로고침</button></div>
+  </header>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="컷 목록">
+      <div class="sidebar-heading"><h1>장면과 컷</h1><span id="cut-count"></span></div>
+      <nav id="cuts" aria-label="미리볼 컷 선택"></nav>
+      <div class="sidebar-tip"><strong>컷을 골라 바로 확인하세요.</strong><p>그림 파일을 저장하면 현재 화면에 반영됩니다. MP4 출력은 필요 없습니다.</p></div>
+    </aside>
+    <main>
+      <div id="error" class="error" role="alert" hidden></div>
+      <div class="viewer-heading"><div><p id="scene-title" class="eyebrow">장면을 불러오는 중</p><h2 id="cut-title">잠시만 기다려 주세요</h2></div><button id="save-frame" class="button subtle" disabled>↓ 현재 화면 저장</button></div>
+      <section class="stage" aria-label="애니메이션 미리보기">
+        <img id="frame" alt="선택한 컷의 애니메이션 화면" draggable="false">
+        <div id="loading" class="loading">미리보기를 불러오고 있습니다.</div>
+      </section>
+      <section class="transport" aria-label="재생과 시간 이동">
+        <div class="time-row"><span><strong id="cut-id">—</strong><span id="cut-position">00:00.00 / 00:00.00</span></span><span id="scene-position">장면 00:00.00</span></div>
+        <label class="sr-only" for="seek">현재 컷의 시간</label><input id="seek" type="range" min="0" max="1" step="0.0333333333" value="0" disabled>
+        <div class="control-row">
+          <div class="playback-buttons"><button id="prev" class="icon-button" title="이전 컷" aria-label="이전 컷">⏮</button><button id="step-back" class="icon-button" title="이전 프레임 (←)" aria-label="이전 프레임">‹</button><button id="play" class="button primary" aria-label="재생" disabled>▶ 재생</button><button id="step-forward" class="icon-button" title="다음 프레임 (→)" aria-label="다음 프레임">›</button><button id="next" class="icon-button" title="다음 컷" aria-label="다음 컷">⏭</button></div>
+          <div class="playback-options"><label><input id="loop" type="checkbox" checked> 컷 반복</label><label><input id="sound" type="checkbox" checked> 음성</label><label><span class="sr-only">재생 속도</span><select id="speed" aria-label="재생 속도"><option value="0.5">0.5배속</option><option value="1" selected>1배속</option><option value="1.5">1.5배속</option><option value="2">2배속</option></select></label><label><span class="sr-only">미리보기 화질</span><select id="quality" aria-label="미리보기 화질"><option value="480">270p · 빠르게</option><option value="960" selected>540p</option><option value="1280">720p</option><option value="1920">1080p</option></select></label></div>
+        </div>
+        <p id="audio-notice" class="audio-notice" hidden></p>
+      </section>
+      <section class="details">
+        <div class="narration"><h3>이 컷의 대본</h3><p id="narration">—</p><span class="keyboard-help">Space 재생·정지　← → 한 프레임　Shift + ← → 1초</span></div>
+        <div class="note"><div class="note-heading"><label for="note">수정 메모 <span id="note-saved"></span></label><button id="copy" class="button small">위치·메모 복사</button></div><textarea id="note" rows="3" placeholder="이 위치에서 바꾸고 싶은 내용을 적어 주세요."></textarea><p>메모는 프로젝트에 자동 저장됩니다. 채팅에서 ‘저장된 메모대로 수정해 줘’라고 요청하세요.</p></div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

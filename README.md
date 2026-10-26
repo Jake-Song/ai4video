@@ -46,6 +46,51 @@ ai4video/
 장면별 길이와 파일 존재 여부를, 없으면 클립 파일 목록을 보여줍니다.
 `ready`는 파일이 있다는 뜻이며 영상 품질 검증 결과는 아닙니다.
 
+## 브라우저에서 컷 검토와 수정 메모
+
+공통 미리보기 도구는 저장소 최상위의 `review.py`, `review-web/`에서 관리합니다.
+
+```bash
+.venv/bin/python ai4video.py review triton-tiled-matmul
+# 또는
+.venv/bin/python review.py --project triton-tiled-matmul
+```
+
+브라우저에서 <http://127.0.0.1:8765>를 엽니다. 상단에서 프로젝트를 바꿀 수 있습니다.
+컷 선택, 시간 이동, 재생·반복, 음성, 프레임 이동, 1080p PNG 저장을 지원합니다.
+그림 코드 저장 시 현재 화면을 자동으로 갱신하며 MP4를 생성하지 않습니다.
+
+수정 메모에는 컷 번호와 작성한 화면의 시간을 함께 저장합니다.
+각 프로젝트의 `review-notes.json`에 저장되므로 Codex가 파일을 읽고 수정에 사용할 수 있습니다.
+브라우저에도 미전송 메모를 임시 보관하며 연결이 복구되면 다시 저장합니다.
+기존 Triton 도구의 브라우저 전용 메모도 같은 주소로 접속하면 자동으로 이전합니다.
+
+```bash
+.venv/bin/python ai4video.py notes triton-tiled-matmul
+.venv/bin/python ai4video.py notes triton-tiled-matmul --all
+```
+
+메모 입력이 **프로젝트에 저장됨**으로 표시된 뒤 채팅에서 ‘저장된 메모대로 수정해 줘’라고 요청하면 됩니다.
+메모 파일은 프로젝트별로 분리됩니다. 메모가 원본 그림이나 대본을 자동으로 바꾸지는 않습니다.
+
+현재 기능 검증의 기준은 Triton 영상입니다. 주기율표·노벨 영상은 제작 파일을 수정하지 않고
+기존 타임라인과 단일 프레임을 읽는 것까지 확인했습니다. 이 두 영상의 대본 수정 내용은
+기존 제작 과정으로 `timeline.json`을 다시 만든 뒤 반영됩니다. 전체 장면·음성 재생의 호환성 검증은 아직 하지 않았습니다.
+
+기본 연결 형식은 프로젝트의 `project.json`, `timeline.json`, `visuals.py`입니다.
+기존의 `frame(index, t)`와 `frame(scene, t)`를 구분해 호출합니다.
+별도 타임라인 로직이 필요하면 프로젝트에 `review_adapter.py`를 두고
+`timeline()`을 구현합니다. `FRAME_MODE = 'scene'` 또는 `'index'`,
+`FRAME_HAS_CAPTIONS`, `CUT_LABELS`로 해당 프로젝트의 표현 방식을 지정할 수 있습니다.
+Triton의 문단·컷 연결만 `triton-tiled-matmul/review_adapter.py`에서 관리합니다.
+
+공통 도구의 회귀 검사는 다음과 같습니다. 브라우저 검사는 임시 복사본을 사용합니다.
+
+```bash
+.venv/bin/python -m unittest discover -s tests -p test_review.py -v
+node tests/review.e2e.cjs /path/to/playwright
+```
+
 ## 제작 명령
 
 기존 [주기율표 프로젝트](./periodic-table/README.md)를 공통 CLI로 실행할 수 있습니다.
