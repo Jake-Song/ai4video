@@ -164,7 +164,6 @@ def base(scene_id, memory=False):
     # B is above C; the equality and alignment are shown with light guides.
     line(im, (1210, 188), (1210, 869), GRID, 1)
     line(im, (70, 967), (1850, 967), GRID, 1)
-    text(im, '격자는 설명용 축척 · A의 열 수 = B의 행 수 = K', 70, 1060, 18, MUTED)
     text(im, 'TRITON · TILED MATMUL', 1850, 55, 18, MUTED, anchor='right')
     return im
 
@@ -310,7 +309,7 @@ def scene_one(im, key, local, duration, visual_phases=None):
         matrices = MEMORY_MATRICES
         highlight(im, region('A', 0, 0, 9, 12, matrices=matrices), BLUE, .25)
         highlight(im, region('B', 0, 0, 12, 9, matrices=matrices), TEAL, .25)
-        note(im, '빠르지만, 용량은 작다', '큰 행렬은 HBM에 저장합니다.', '빠른 작업 공간에는', '필요한 일부만 가져옵니다.', y=245)
+        note(im, '빠르지만, 용량은 작다', 'Shared memory와 Register에', '데이터를 저장한다면 HBM보다', '빠르게 접근할 수 있지만,', '용량이 작아 큰 행렬 전체를', '담기는 어렵습니다.', y=220)
         # A single, small work area instead of a hardware/block/thread dashboard.
         text(im, 'Shared memory · Registers', 1280, 495, 25, PURPLE, True)
         line(im, (1280, 535), (1780, 535), GRID, 1)
@@ -470,8 +469,6 @@ def frame(scene, t):
         lines = cue['text'].split('\n')
         for i, body in enumerate(lines):
             text(im, body, W/2, 1012+(i-(len(lines)-1)/2)*35, 28, INK, anchor='center', maxw=1760)
-    text(im, f'{int(t):02}s / {round(scene["duration"]):02}s', 1850, 1060, 18, MUTED, anchor='right')
-    ImageDraw.Draw(im).rectangle((0, 1077, round(W*clamp(t/scene['duration'])), 1080), fill=PURPLE)
     return im
 
 

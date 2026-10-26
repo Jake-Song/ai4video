@@ -69,7 +69,6 @@ def header(scene):
     text(im,scene['title'],124,55,36,v.INK,True,maxw=1680)
     v.equation(im,90,147)
     v.line(im,(70,967),(1850,967),v.GRID,1)
-    text(im,'설명용 작은 타일 · 실제 GPU 배치 및 타일 크기와 구분',70,1060,18,v.MUTED)
     return im
 
 
@@ -172,9 +171,9 @@ def render_intro_reuse(scene,beat,local):
         for i in range(min(4,int(max(0,p-.3)/.6*4)+1)):
             rr,cc=divmod(i,2)
             v.highlight(im,region('C',r0+rr,c0+cc),v.PURPLE,.9)
-        v.note(im,'중복 전송이\n대역폭을 차지합니다.',
-               '입력을 기다리는 시간이 늘 수 있습니다.',
-               '가져온 값을 가까이 두고 재사용합니다.',y=245)
+        v.note(im,'중복 전송이\n대역폭을 차지합니다.',y=245)
+        text(im,'입력을 기다리는 시간이 길어질 수 있습니다.',1280,351,27,v.MUTED,maxw=550)
+        text(im,'가져온 값을 가까이 두고 재사용합니다.',1280,394,28,v.MUTED,maxw=550)
         v.highlight(im,(1280,535,1445,715),v.BLUE,.45,False,2)
         v.highlight(im,(1535,535,1795,715),v.TEAL,.55,False,2)
         text(im,'HBM',1362,568,29,v.BLUE,True,'center')
@@ -193,7 +192,8 @@ def render_intro_reuse(scene,beat,local):
                     q=((p-.3)/.7*3)%1
                     v.pulse(im,1665+(x+21-1665)*q,730+90*q,v.BLUE,p)
             text(im,'가져온 입력을 여러 출력에 재사용',1280,920,26,v.TEAL,True,maxw=550)
-        text(im,'실제 HBM 접근은 캐시의 영향도 받습니다.',1280,477,23,v.MUTED,maxw=550)
+        text(im,'실제 HBM 데이터 이동량은',1280,461,23,v.MUTED,maxw=550)
+        text(im,'캐시의 영향을 받기도 합니다.',1280,493,23,v.MUTED,maxw=550)
         return im
     # The row/column relation follows the same geometry as cut 1-01.
     ax,ay,ar,ac=matrices['A']
@@ -207,44 +207,58 @@ def render_intro_reuse(scene,beat,local):
 
 
 def scene_three(im,key,p):
-    left,right=Matrix(210,330,4,4,75),Matrix(1200,330,4,4,75)
-    left.draw(im,'CUDA',v.BLUE,label='스레드와 블록에서 출발')
-    right.draw(im,'Triton',v.TEAL,label='데이터 타일에서 출발')
-    n=min(3,int(p*4))
-    r,c=divmod(n,2)
-    tile_outlines(im,left)
-    tile_outlines(im,right)
-    if key in ('data','tensor','compiler','next'):
-        r,c=0,0
-    left.mark(im,r*2,c*2,2,2,v.BLUE,.8)
-    right.mark(im,r*2,c*2,2,2,v.TEAL,.8)
-    v.line(im,(960,245),(960,910),v.GRID,1)
-    v.arrow(im,(650,480),(1090,480),v.MUTED,2)
-    text(im,'같은 출력 타일 계산',870,430,28,v.INK,True,'center')
-    # A separate group of thread dots avoids equating a thread to one output cell.
-    v.highlight(im,(145,715,710,835),v.BLUE,.6,False,2)
-    for i in range(8):
-        x,y=190+(i%4)*136,750+(i//4)*47
-        v.pulse(im,x,y,v.BLUE,p+i/8)
-        text(im,f't{i}',x+17,y,20,v.MUTED)
-    text(im,'스레드 블록: 협력하는 스레드의 묶음',145,872,25,v.MUTED)
-    text(im,'program_id → 담당 출력 타일',1130,710,29,v.TEAL,True)
-    text(im,'블록 텐서: 여러 데이터 원소의 묶음',1130,772,25,v.MUTED)
-    if key in ('cuda','indices'):
-        text(im,'blockIdx · threadIdx',145,250,30,v.BLUE,True)
-        v.arrow(im,(415,700),(360,645),v.BLUE,2)
-        if key=='indices':
-            text(im,'ID → 주소 · 담당 연산 · 동기화',145,920,27,v.BLUE)
-    elif key in ('compiler','tensor','difference'):
-        v.arrow(im,(1500,705),(1500,821),v.TEAL,2)
-        text(im,'컴파일러 → 여러 스레드에 배분',1130,866,27,v.PURPLE,True)
+    input_as=[]
+    for offset,name,color,description in (
+        (0,'CUDA',v.BLUE,'스레드와 블록에서 출발'),
+        (960,'Triton',v.TEAL,'데이터 타일에서 출발'),
+    ):
+        text(im,name,135+offset,215,30,color,True)
+        text(im,description,280+offset,215,23,v.MUTED)
+        a=Matrix(135+offset,540,4,4,60)
+        b=Matrix(535+offset,245,4,4,60)
+        c=Matrix(535+offset,540,4,4,60)
+        a.draw(im,'A',v.BLUE,label='입력')
+        b.draw(im,'B',v.TEAL,label='입력')
+        c.draw(im,'C',v.PURPLE,label='출력')
+        a.mark(im,2,0,2,2,v.BLUE)
+        b.mark(im,0,0,2,2,v.TEAL)
+        tile_outlines(im,c)
+        c.mark(im,2,0,2,2,color,.8)
+        project(im,a,b,c,r=2,col=0)
+        v.arrow(im,(a.x+270,720),(c.x-25,720),v.BLUE,2)
+        input_as.append(a)
+    left,right=input_as
+    # Keep both annotations attached to the lower-left A input tile.
+    lx,ly=left.center(2.5,.5)
+    rx,ry=right.center(2.5,.5)
+    text(im,'block',lx,824,28,v.BLUE,True,'center')
+    v.arrow(im,(lx,803),(lx,783),v.BLUE,3)
+    left.mark(im,2,0,color=v.ORANGE,alpha=.65)
+    text(im,'thread',lx,ly+39,24,v.ORANGE,True,'center',maxw=110)
+    v.arrow(im,(lx-43,ly+15),(lx+43,ly+15),v.ORANGE,3)
+    text(im,'program',rx,824,28,v.TEAL,True,'center')
+    v.arrow(im,(rx,803),(rx,783),v.TEAL,3)
+    right.mark(im,2,0,color=v.ORANGE,alpha=.65)
+    text(im,'data',*right.center(2,0),19,v.ORANGE,True,'center',maxw=56)
+    v.line(im,(960,245),(960,945),v.GRID,1)
+    text(im,'같은 출력 타일 계산',960,147,25,v.INK,True,'center')
+    text(im,'blockIdx · threadIdx → 담당 작업',135,875,29,v.BLUE,True)
+    text(im,'program_id → 담당 출력 타일',1095,875,29,v.TEAL,True)
+    cuda_detail='스레드 블록: 협력하는 스레드의 묶음'
+    triton_detail='블록 텐서: 여러 데이터 원소의 묶음'
+    if key=='indices':
+        cuda_detail='ID → 주소 · 담당 연산 · 동기화'
+    if key in ('compiler','tensor','difference'):
+        triton_detail='컴파일러 → 여러 스레드에 배분'
         if key=='difference':
-            text(im,'CUDA에서도 타일링을 구현할 수 있습니다.',1130,920,26,v.MUTED)
+            cuda_detail='CUDA에서도 타일링을 구현할 수 있습니다.'
     elif key=='next':
-        v.pulse(im,*right.center(.5,.5),v.PURPLE,p)
-        text(im,'이제 프로그램 하나를 따라갑니다.',1130,870,28,v.PURPLE,True)
+        v.pulse(im,*right.center(2.5,.5),v.PURPLE,p)
+        triton_detail='이제 프로그램 하나를 따라갑니다.'
     elif key=='data':
-        text(im,'어떤 데이터에 어떤 연산을 할까?',1130,870,28,v.TEAL,True)
+        triton_detail='어떤 데이터에 어떤 연산을 할까?'
+    text(im,cuda_detail,135,920,25,v.MUTED,maxw=730)
+    text(im,triton_detail,1095,920,25,v.MUTED,maxw=730)
 
 
 def scene_four(im,key,p):
@@ -252,8 +266,6 @@ def scene_four(im,key,p):
     tile_outlines(im,c,True)
     if key=='example':
         panel(im,'작은 예제로 바꿔 봅니다','M = N = K = 4','BM = BN = 2','2 × 2는 애니메이션용 크기입니다.')
-        a.mark(im,0,0,4,4,v.BLUE,.4)
-        b.mark(im,0,0,4,4,v.TEAL,.4)
     elif key=='four':
         n=min(3,int(p*5))
         r,col=divmod(n,2)
@@ -333,38 +345,58 @@ def scene_five(im,key,p):
 
 def scene_six(im,key,p):
     a,b,c=layout(im)
-    inputs(im,a,b,c)
-    use_a=key!='reuse_b'
-    if key in ('same','general','intensity','cache'):
-        use_a=p<.5
-    if use_a:
-        a.mark(im,0,0,1,1,v.ORANGE)
-        outputs=[(0,0),(0,1)]
-        start=a.center(0,0)
-        color=v.BLUE
-        title='A의 한 값 → 출력 두 열'
-        detail=['A[0, 0]은 그대로 재사용','B[0, 0]과 곱해 C[0, 0]에 기여','B[0, 1]과 곱해 C[0, 1]에 기여']
+    c.mark(im,0,0,2,2,v.PURPLE,.45)
+    # Each cut adds the next pair of arrows; later cuts retain the finished diagram.
+    phase={'reuse_intro':-1,'reuse_a':0,'reuse_b':1,'general':2,
+           'same':3,'intensity':4,'cache':4}[key]
+    count=0 if phase<0 else 8 if phase==4 else phase*2+min(2,1+int(p*2))
+    steps=[(use_a,fixed,partner) for fixed in range(2)
+           for use_a in (True,False) for partner in range(2)][:count]
+    title='A의 한 행을 재사용'
+    detail=['A의 같은 행을 그대로 둡니다.','B의 열을 바꿔 곱하고 더하면','C의 같은 행에 결과가 쌓입니다.']
+    color=v.BLUE
+    if steps:
+        use_a,fixed,partner=steps[-1]
+        row,col=(fixed,partner) if use_a else (partner,fixed)
+        a.mark(im,row,0,1,4,v.BLUE)
+        b.mark(im,0,col,4,1,v.TEAL)
+        color=v.BLUE if use_a else v.TEAL
+        if not use_a:
+            title='B의 한 열을 재사용'
+            detail=['B의 같은 열을 그대로 둡니다.','A의 행을 바꿔 곱하고 더하면','C의 같은 열에 결과가 쌓입니다.']
+        for row,col in {(fixed,partner) if use_a else (partner,fixed)
+                        for use_a,fixed,partner in steps}:
+            c.mark(im,row,col,color=v.PURPLE,alpha=.95)
+        for use_a,fixed,partner in steps:
+            if use_a:
+                start=(a.x+4*a.cell+8,a.center(fixed,0)[1])
+                target=c.center(fixed,partner)
+            else:
+                shift=18*partner
+                start=(b.center(0,fixed)[0]+shift,b.y+4*b.cell+8)
+                target=(c.center(partner,fixed)[0]+shift,c.center(partner,fixed)[1])
+            v.curve(im,start,target,v.BLUE if use_a else v.TEAL,
+                    amount=40+partner*18,width=2)
+        footer=('A의 행 고정 · B의 열 이동' if steps[-1][0]
+                else 'B의 열 고정 · A의 행 이동')
+        if count==8:
+            footer='A의 행과 B의 열을 재사용한 결과'
     else:
-        b.mark(im,0,0,1,1,v.ORANGE)
-        outputs=[(0,0),(1,0)]
-        start=b.center(0,0)
-        color=v.TEAL
-        title='B의 한 값 → 출력 두 행'
-        detail=['B[0, 0]은 그대로 재사용','A[0, 0]과 곱해 C[0, 0]에 기여','A[1, 0]과 곱해 C[1, 0]에 기여']
-    for n,(r,col) in enumerate(outputs):
-        c.mark(im,r,col,color=color,alpha=.95 if p>.18+n*.25 else .25)
-        v.curve(im,start,c.center(r,col),color,amount=40+n*18,width=2)
+        a.mark(im,0,0,2,4,v.BLUE,.35)
+        b.mark(im,0,0,4,2,v.TEAL,.35)
+        footer='출력 타일에 필요한 A의 행과 B의 열'
+    text(im,footer,120,920,28,color,True,maxw=900)
     if key=='reuse_intro':
-        panel(im,'타일 안에서 같은 값을 재사용','한 번 가져온 입력으로','여러 출력의 계산에 기여합니다.')
+        panel(im,'행과 열을 묶어서 재사용','A의 행은 서로 다른 B의 열과,','B의 열은 서로 다른 A의 행과','곱하고 더하는 데 다시 쓰입니다.')
     elif key in ('reuse_a','reuse_b'):
         panel(im,title,*detail,color=color)
     elif key=='general':
-        panel(im,'BM × BN 타일로 일반화','A의 각 값 → BN개 출력에 기여','B의 각 값 → BM개 출력에 기여')
+        panel(im,'BM × BN 타일로 일반화','A의 한 행 → BN개 출력 계산','B의 한 열 → BM개 출력 계산')
     elif key=='same':
-        panel(im,'같은 입력에서 여러 결과로','출력마다 입력 전체를 다시 읽는 대신','타일 안에서 값을 공유하고 재사용합니다.')
+        panel(im,'같은 행·열에서 여러 결과로','출력마다 같은 입력을 다시 읽는 대신','가져온 A의 행과 B의 열을 재사용합니다.')
     elif key=='intensity':
-        panel(im,'읽은 데이터당 더 많은 연산','한 K 구간의 곱셈·덧셈:', '약 2 × BM × BN × BK 연산')
-        text(im,'입력 원소: BM × BK + BK × BN',1130,590,27,v.MUTED)
+        panel(im,'읽은 데이터당 더 많은 연산','K 전체의 곱셈·덧셈:', '약 2 × BM × BN × K 연산')
+        text(im,'입력 원소: BM × K + K × BN',1130,590,27,v.MUTED)
         text(im,'입력 재사용 → 연산 집약도 증가',1130,684,29,v.PURPLE,True)
     else:
         panel(im,'재사용 구조가 성능의 출발점','실제 HBM 접근 횟수에는','캐시와 컴파일 결과도 영향을 줍니다.','그림은 논리적인 재사용을 보여줍니다.')
@@ -509,6 +541,9 @@ def scene_nine(im,key,p):
         return
     a,b,c=layout(im)
     tile_outlines(im,c)
+    if key=='overview':
+        panel(im,'전체 계산 다시 보기','프로그램마다 서로 다른 출력 타일 담당','입력 읽기 → 곱하고 누적 → 저장')
+        return
     if key=='ending':
         count=min(4,int(p*5)+1)
         for n in range(count):
