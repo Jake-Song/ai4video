@@ -7,15 +7,16 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parent
+PROJECTS = ROOT / 'videos'
 STEPS = ('draft', 'audio', 'sync', 'preview', 'render', 'assemble', 'check')
 
 
 def project_path(name):
     if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', name):
         raise ValueError('프로젝트 이름은 영문 소문자·숫자·하이픈으로 입력하세요.')
-    folder = (ROOT / name).resolve()
-    if folder.parent != ROOT:
-        raise ValueError('프로젝트는 ai4video 바로 아래에 있어야 합니다.')
+    folder = (PROJECTS / name).resolve()
+    if folder.parent != PROJECTS.resolve():
+        raise ValueError('프로젝트는 videos 바로 아래에 있어야 합니다.')
     return folder
 
 
@@ -62,7 +63,7 @@ def main():
     p.add_argument('--jobs', type=int, default=4)
     args = parser.parse_args()
     if args.command == 'list':
-        for manifest in sorted(ROOT.glob('*/project.json')):
+        for manifest in sorted(PROJECTS.glob('*/project.json')):
             folder, data = read_project(manifest.parent.name)
             clips = local_path(folder, data['clips'])
             count = len(list(clips.glob('*.mp4'))) if clips.exists() else 0
@@ -70,6 +71,7 @@ def main():
     elif args.command in ('init', 'register'):
         folder = project_path(args.project)
         if args.command == 'init':
+            PROJECTS.mkdir(exist_ok=True)
             folder.mkdir()  # Never overwrite an existing project.
         elif not folder.is_dir():
             raise ValueError('등록할 프로젝트 폴더가 없습니다.')

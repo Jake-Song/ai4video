@@ -1,7 +1,7 @@
 """Shared local cut reviewer for video projects. No FFmpeg in the preview path.
 
 Run from the repository root:
-    .venv/bin/python ai4video.py review triton-tiled-matmul
+    .venv/bin/python ai4video.py review my-video
 """
 from __future__ import annotations
 
@@ -29,6 +29,7 @@ from urllib.parse import parse_qs, unquote, urlsplit
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent
+PROJECTS = ROOT/'videos'
 WEB = ROOT/'review-web'
 PROJECT_IMPORT_LOCK = threading.RLock()
 STATIC = {
@@ -353,7 +354,7 @@ class RevisionChanged(Exception):
 
 
 class ProjectCatalog:
-    def __init__(self, root=ROOT, default_project=None, runtime=None):
+    def __init__(self, root=PROJECTS, default_project=None, runtime=None):
         self.root, self.default_project = Path(root), default_project
         self.runtimes = {}
         self.lock = threading.RLock()
@@ -379,6 +380,8 @@ class ProjectCatalog:
         with self.lock:
             if name is None:
                 name = self.default_project or next((p['id'] for p in self.projects() if p['ready']),None)
+                if name is None:
+                    raise ValueError('검토 가능한 프로젝트가 없습니다. videos/<프로젝트>/에 project.json, visuals.py와 타임라인을 준비해 주세요.')
             if not name or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*',name):
                 raise ValueError('Unknown project')
             available = {p['id']:p for p in self.projects()}
@@ -530,7 +533,10 @@ def main(default_project=None):
     parser.add_argument('--verbose', action='store_true')
     args = parser.parse_args()
     projects = ProjectCatalog(default_project=args.project)
-    runtime = projects.get()
+    try:
+        runtime = projects.get()
+    except ValueError as exc:
+        parser.error(str(exc))
     runtime.refresh()
     server = ThreadingHTTPServer((args.host, args.port), make_handler(projects))
     server.daemon_threads = True
