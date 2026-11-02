@@ -33,6 +33,14 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(actual.tobytes(), expected.tobytes())
         self.assertEqual(version, state['version'])
 
+    def test_portrait_frames_scale_by_long_edge(self):
+        with tempfile.TemporaryDirectory(prefix='review-portrait-') as folder:
+            runtime = review.PreviewRuntime(create_project(folder, size=(1080, 1920)), 'portrait')
+            state = runtime.state()
+            self.assertEqual((state['width'], state['height']), (1080, 1920))
+            self.assertEqual(Image.open(BytesIO(runtime.frame(1, 3, 960)[0])).size, (540, 960))
+            self.assertEqual(Image.open(BytesIO(runtime.frame(1, 3, 1920, 'png')[0])).size, (1080, 1920))
+
     def test_source_change_reloads_pixels_and_invalidates_cache(self):
         old = self.runtime.frame(1, 3, 960)
         path = self.root/'visuals.py'

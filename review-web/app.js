@@ -321,6 +321,9 @@ async function refresh(force = false) {
     const offset = previous ? state.t - previous.start : Number(initialQuery.get('t') ?? saved.offset ?? 0);
     pause();
     state.manifest = manifest;
+    const stage=document.querySelector('.stage'), fw=manifest.width||16, fh=manifest.height||9;
+    stage.style.aspectRatio=`${fw}/${fh}`;
+    stage.classList.toggle('portrait',fh>fw);
     document.title=`컷 미리보기 · ${manifest.title}`;
     if (!scene()) state.sceneId = manifest.scenes[0].index;
     if (!cut()) state.cutKey = scene().cuts[0].key;

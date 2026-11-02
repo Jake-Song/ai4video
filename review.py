@@ -334,8 +334,10 @@ class PreviewRuntime:
             if not self.frame_has_captions:
                 im = self.overlay_caption(im, scene, frame_no/fps)
             im = im.convert('RGB')
-            if width != im.width:
-                im = im.resize((width, round(width*im.height/im.width)), Image.Resampling.BILINEAR)
+            # The requested size is the long edge, so portrait (9:16) frames keep their resolution.
+            if width != max(im.size):
+                scale = width/max(im.size)
+                im = im.resize((round(im.width*scale), round(im.height*scale)), Image.Resampling.BILINEAR)
             output = BytesIO()
             if fmt == 'jpeg':
                 im.save(output, 'JPEG', quality=86, subsampling=0)

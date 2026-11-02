@@ -9,16 +9,17 @@ import wave
 VISUALS = '''from PIL import Image, ImageDraw
 
 BLUE = '#3366cc'
+SIZE = (1920, 1080)
 
 def frame(scene, t):
-    image = Image.new('RGB', (1920, 1080), BLUE)
+    image = Image.new('RGB', SIZE, BLUE)
     x = int(t * 60) % 1800
     ImageDraw.Draw(image).rectangle((x, 300, x + 100, 500), fill='white')
     return image
 '''
 
 
-def create_project(root, title='Sample video'):
+def create_project(root, title='Sample video', size=(1920, 1080)):
     root = Path(root)
     root.mkdir(parents=True, exist_ok=True)
     (root/'project.json').write_text(json.dumps({
@@ -36,8 +37,8 @@ def create_project(root, title='Sample video'):
                  'audio': 'audio/01-timed.wav', 'speech_duration': 9}
                 for cut in (1, 2)]})
     (root/'timeline.json').write_text(json.dumps({
-        'fps': 30, 'width': 1920, 'height': 1080, 'scenes': scenes}))
-    (root/'visuals.py').write_text(VISUALS)
+        'fps': 30, 'width': size[0], 'height': size[1], 'scenes': scenes}))
+    (root/'visuals.py').write_text(VISUALS.replace('(1920, 1080)', repr(tuple(size))))
     (root/'audio').mkdir(exist_ok=True)
     # A deterministic silent WAV exercises audio URLs and byte ranges offline.
     with wave.open(str(root/'audio'/'01-timed.wav'), 'wb') as audio:

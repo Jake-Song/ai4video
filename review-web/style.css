@@ -8,3 +8,4 @@
 .cut-number{white-space:nowrap}
 @media(min-width:721px){body:is([data-project="triton-tiled-matmul"],[data-project="cuda-memory-optimization"]) .sidebar{position:sticky;top:0;align-self:start;height:calc(100vh - 65px);min-height:420px}body:is([data-project="triton-tiled-matmul"],[data-project="cuda-memory-optimization"]) #cuts{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}}
 .project-select{max-width:430px;background:#202129;color:#cbccd8;border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:14px}.note-heading label span.save-error{color:#e7bb81}@media(max-width:720px){.brand{flex-wrap:wrap}.project-select{max-width:250px;font-size:13px}.topbar{align-items:flex-start}.header-actions{margin-left:auto}}
+.stage.portrait{width:auto;height:calc(100vh - 230px);min-height:480px;max-width:100%;margin:0 auto}
