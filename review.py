@@ -175,7 +175,7 @@ class PreviewRuntime:
                 if len(label) > 24:
                     label = label[:24]+'…'
                 audio = beat.get('audio')
-                audio_offset, audio_duration = -.2, beat.get('speech_duration', beat.get('duration', end-start))
+                audio_offset, audio_duration = float(beat.get('audio_offset', -.2)), beat.get('speech_duration', beat.get('duration', end-start))
                 if not explicit:
                     timed = self.root/'audio'/f'{scene["index"]:02}-timed.wav'
                     mp3 = self.root/'audio'/f'{scene["index"]:02}-{i:02}.mp3'
