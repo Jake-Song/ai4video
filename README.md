@@ -37,12 +37,16 @@ ai4video/
     └── periodic-table/         # 다른 프로젝트도 같은 층에 추가
         ├── project.json        # 제목, 제작 상태, 제작 스크립트·산출물 경로
         ├── README.md           # 개별 영상 설명과 재현 방법
-        ├── lesson.py           # 기존 주기율표 프로젝트의 대본 원본
-        ├── script.ko.md        # 대본
+        ├── script.ko.md        # 대본 (장면·컷·내레이션)
+        ├── cuts.py             # 컷별 카메라 이동과 강조 시점
+        ├── boards.py           # 장면별 그림 (boards2.py까지)
+        ├── zoom.py             # 그리기 엔진 (tensor-zoom에서 복사)
+        ├── visuals.py          # 카메라·HUD·자막 합성과 frame(scene, t)
         ├── build.py            # 프로젝트별 제작 스크립트
-        ├── timeline.json       # 장면별 번호·제목·길이
-        ├── data/
-        ├── audio/
+        ├── review_adapter.py   # 리뷰어 연결
+        ├── timeline.json       # 장면·컷별 시작 시각과 길이
+        ├── data/               # 원소·이온화 에너지 자료
+        ├── audio/              # 컷별 음성과 단어 경계
         ├── clips/              # 장면별 영상
         └── preview/
 ```
@@ -104,20 +108,21 @@ node tests/review.e2e.cjs /path/to/playwright
 ```bash
 uv sync
 
-uv run ai4video.py run periodic-table draft
-uv run ai4video.py run periodic-table audio
-uv run ai4video.py run periodic-table sync
-uv run ai4video.py run periodic-table preview
+uv run ai4video.py run periodic-table draft      # 음성 없이 예상 길이로 타임라인
+uv run ai4video.py run periodic-table audio      # 문장이 바뀐 컷만 음성 합성
+uv run ai4video.py run periodic-table sync       # 실측 음성 길이로 타임라인·자막
+uv run ai4video.py run periodic-table preview    # 컷별 정지 화면과 스토리보드
+uv run ai4video.py run periodic-table check      # 컷마다 3개 시점 렌더 + 글자 경계 검사
 uv run ai4video.py run periodic-table render --jobs 4
-uv run ai4video.py run periodic-table render --scene 13 --jobs 2
+uv run ai4video.py run periodic-table render --scene 13 --jobs 2   # 13번 장면만
 uv run ai4video.py run periodic-table assemble
-uv run ai4video.py run periodic-table check
 ```
 
 `run`은 루트의 `.venv/bin/python`으로 해당 프로젝트의 `build.py`를 실행하고 종료 코드를 전달합니다.
 새 프로젝트의 `build.py`는 사용할 제작 단계의 명령을 받아 처리하도록 작성하세요.
-`init`은 영상 렌더러를 생성하지 않습니다. 주기율표의 `lesson.py`, `visuals.py`, `build.py`는
+`init`은 영상 렌더러를 생성하지 않습니다. 주기율표의 `boards.py`, `cuts.py`, `build.py`는
 주기율표 전용이므로 다른 주제에는 별도의 장면과 제작 구현이 필요합니다.
+`zoom.py`, `visuals.py`의 카메라·HUD·자막 구성은 tensor-zoom과 같은 방식이라 새 프로젝트의 출발점으로 쓸 수 있습니다.
 
 음성 생성은 온라인 서비스를 사용합니다. 기존 음성이 있으면 주기율표의 렌더링과 검증은
 오프라인으로 실행할 수 있습니다. 공통 도구와 의존성 설정은 Git으로 관리하고,
